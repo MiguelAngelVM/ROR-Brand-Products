@@ -6,6 +6,7 @@ class ProductsController < ApplicationController
   def index
     @products = Product.select("brand_id,br.sName, products.Price, products.Description, products.id, products.Name").joins("LEFT JOIN brands br ON br.id = products.brand_id ");
     @brands = Brand.all
+    @sum = Product.sum("Price")
   end
 
   # GET /products/1
@@ -70,6 +71,7 @@ class ProductsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_product
       @brands = Brand.all
+      @sum = Product.sum("Price")
       @product = Product.select("brand_id,br.sName, products.Price, products.Description, products.id, products.Name").joins("LEFT JOIN brands br ON br.id = products.brand_id ").find(params[:id])
     end
 

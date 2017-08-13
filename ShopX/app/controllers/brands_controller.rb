@@ -65,6 +65,7 @@ class BrandsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_brand
+    ##@sum = Product.sum("products.Price").joins("LEFT JOIN brands br ON br.id = products.brand_id ").where("brand_id = ?",params[:id])
       @brand = Brand.find(params[:id])
       @products = Product.select("br.sName, products.Price, products.Description, products.id, products.Name").joins("LEFT JOIN brands br ON br.id = products.brand_id ").where("brand_id = ?",params[:id]);
     end
