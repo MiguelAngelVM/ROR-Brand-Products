@@ -1,0 +1,53 @@
+<br><br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <span class="glyphicon glyphicon-search"></span>Show <%= @brand.sName %>
+                     <div class="btn-group pull-right">
+                        <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                            <span class="glyphicon glyphicon-cog" style="margin-right: 0px;"></span>
+                        </button>
+                        <ul class="dropdown-menu slidedown">
+                            <li><%= link_to 'Edit', edit_brand_path(@brand), class:"glyphicon glyphicon-pencil"%></li>
+                            <li><%= link_to 'Back', brands_path, class:"glyphicon glyphicon-left" %></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="panel-body">
+                	<div class="col-md-12">
+			        	<br><span class="glyphicon glyphicon-list"></span>Products from <%=@brand.sName%>
+						<ul class="list-group"><br>
+		                    <% @products.each do |product| %>
+		                        <li class="list-group-item">
+	                                <label>
+	                                    Name: <%= product.Name %>
+	                                </label><br>
+	                                <label>
+	                                    Price: $<%= product.Price %>
+	                                </label><br>
+	                                <label>
+	                                    Description: <%= product.Description %>
+	                                </label>
+		                             <div class="pull-right action-buttons">
+		                                <%= link_to 'Show', product, :class=>"glyphicon glyphicon-search" %>
+		                                <%= link_to 'Edit',edit_product_path(product), :class=>"glyphicon glyphicon-pencil" %>
+		                                <%=link_to 'Destroy', product, method: :delete, data: { confirm: "Are you sure?" }, :class=>"glyphicon glyphicon-pencil"%>
+		                            </div>
+		                        </li>
+		                    <%end%>
+		                </ul>
+                   	</div>
+                </div><br>
+                <div class="panel-footer">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Miguel Angel VM</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

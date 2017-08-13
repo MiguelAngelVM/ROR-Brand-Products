@@ -1,0 +1,57 @@
+<br><br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <span class="glyphicon glyphicon-list"></span>Products
+                     <div class="btn-group pull-right">
+                        <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                            <span class="glyphicon glyphicon-cog" style="margin-right: 0px;"></span>
+                        </button>
+                        <ul class="dropdown-menu slidedown">
+                       
+                            <li><%= link_to 'New Product',  new_product_path, class:"glyphicon glyphicon-plus" %></li>
+                            <li><%= link_to 'Brands', brands_path, class:"glyphicon glyphicon-list" %></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <ul class="list-group"><br>
+                        <% @products.each do |product| %>
+                            <li class="list-group-item">
+                                  <label>
+                                      Name: <%= product.Name %>
+                                  </label><br>
+                                  <label>
+                                      Price: $<%= product.Price %>
+                                  </label><br>
+                                  <label>
+                                      Description: <%= product.Description %>
+                                  </label><br>
+                                  <label>
+                                      Bread: <%= product.sName %>
+                                  </label>
+                                 <div class="pull-right action-buttons">
+                                    <%= link_to 'Show', product, :class=>"glyphicon glyphicon-search" %>
+                                    <%= link_to 'Edit',edit_product_path(product), :class=>"glyphicon glyphicon-pencil" %>
+                                    <%=link_to 'Destroy', product, method: :delete, data: { confirm: "Are you sure?" }, :class=>"glyphicon glyphicon-pencil"%>
+                                </div>
+                            </li>
+                        <%end%>
+                    </ul>
+                </div><br>
+                <div class="panel-footer">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>
+                                Total Count <span class="label label-info"><%=@products.length%></span></h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
